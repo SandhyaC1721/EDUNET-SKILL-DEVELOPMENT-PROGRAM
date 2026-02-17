@@ -1,0 +1,17 @@
+<h2>Dashboard</h2>
+
+<h3>Available Courses</h3>
+
+<ul>
+    {% for course in courses %}
+        <li>
+            {{ course.title }} - ₹{{ course.fees }}
+
+            <form action="{% url 'enroll' course.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Enroll</button>
+            </form>
+
+        </li>
+    {% endfor %}
+</ul>
